@@ -1,4 +1,4 @@
-const LinkedList = require('./linkedlist')
+const LinkedList = require('./LinkedList')
 
 const ll = new LinkedList();
 ll.addToHead(10);
