@@ -13,6 +13,7 @@ class LinkedList {
     }
     const node = new Node(value, null);
     current.next = node;
+    this.length++;
   }
 
   // Returns value at an index in linked list
@@ -91,32 +92,34 @@ class LinkedList {
   Contains(value){
     let count = 0;
     let current = this.head;
-    if(current.value === value) {
-      return 0;
-    }
-    while(count <= this.length) {
-      current = current.next;
-      count++;
+
+    while(count < this.length) {
       if(current.value === value) {
         return true;
-      }
+      } else {
+        count++;
+        current = current.next;
+      }      
     }
+
+    return false; // cannot find value;
   }
 
   // Returns index where value is found
   Find(value) {
     let count = 0;
     let current = this.head;
-    if(current.value === value) {
-      return 0;
-    }
-    while(count <= this.length) {
-      current = current.next;
-      count++;
+
+    while(count < this.length) {
       if(current.value === value) {
         return count;
-      }
+      } else {
+        count++;
+        current = current.next;
+      }      
     }
+
+    return null; // cannot find value;
   }
 
   // Returns last node in the linked list
@@ -148,6 +151,7 @@ class LinkedList {
       current = current.next;
     }
     current.next = null;  // remove ref to last entry
+    this.length --;
   }
 
   // Prints lists nodes value to string
@@ -165,7 +169,8 @@ class LinkedList {
 // Creates a linked list from values
 LinkedList.fromValues = function(...values) {
   const ll = new LinkedList();
-  for(let i = values.length; i > 0; i--) {
+  for(let i = 0; i < values.length; i++){
+    console.log(values[i])
     ll.Prepend(values[i]);
   }
   return ll;

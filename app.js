@@ -1,8 +1,4 @@
 const LinkedList = require('./LinkedList')
 
-const ll = new LinkedList();
-ll.addToHead(10);
-ll.addToHead(20);
-ll.addToHead(30);
-ll.print();
-console.log(ll.getByIndex(0).value);
+const ll = LinkedList.fromValues(10,20,30,40,50);
+ll.ToString();
