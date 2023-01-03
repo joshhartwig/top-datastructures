@@ -201,7 +201,7 @@ describe('#RemoveAt', () => {
     ll.RemoveAt(2); // 0-50,1-40,2-20,3-10
     expect(ll.Size()).toBe(4);
   }),
-  test('expect values at correct indexs post remove', () => {
+  test('expect values at correct indexes post remove', () => {
     const ll = LinkedList.fromValues(10,20,30,40,50);
     ll.RemoveAt(2); // 0-50,1-40,2-20,3-10
     expect(ll.At(1)).toBe(40);
@@ -211,5 +211,17 @@ describe('#RemoveAt', () => {
   test('ensure out of bounds index returns error', () => {
     const ll = LinkedList.fromValues(10,20,30,40,50);
     expect(ll.RemoveAt(5)).toBe('Error index out of range');
+  }),
+  test('ensure remove of last index works correctly', () => {
+    const ll = LinkedList.fromValues(10,20,30,40,50);
+    ll.RemoveAt(4);
+    expect(ll.At(3)).toBe(20);
+    expect(ll.At(2)).toBe(30);
+  }),
+  test('ensure remove of 1st index works correct', () => {
+    const ll = LinkedList.fromValues(10,20,30,40,50);
+    ll.RemoveAt(0)
+    expect(ll.At(0)).toBe(40);
+    expect(ll.At(1)).toBe(30);
   })
 })
